@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+        /* 让页面所有元素的padding和margin都设置为0 */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        /* 设置背景图，字体设置为微软雅黑 */
+        body{background-color: coral;font-family: "微软雅黑", sans-serif;}
+        /* 引用图片高度设置为28px，就是页面最上方像屋檐一样的黑色图 */
+        /* 整个登录框的css，并使用绝对定位居中 */
+        .regist {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -150px;
+            width:300px;
+            height:300px;
+        }
+        /* 前面分析过的h1标签的css，text-shadow设置阴影使文字更好看，letter-spacing设置字符间距 */
+        .regist h1 { color:#555555; text-shadow: 0px 10px 8px #CDC673; letter-spacing:2px;text-align:center;margin-bottom:20px; }
+        /* 两个输入框的css，border属性设置边框线粗细以及颜色，border-radius设置边框的圆角角度 */
+        input{
+            padding:10px;
+            width:100%;
+            color:white;
+            margin-bottom:10px;
+            background-color:#555555;
+            border: 1px solid black;
+            border-radius:4px;
+            letter-spacing:2px;
+        }
+        /* 登录按钮的css，cursor:pointer当鼠标移到按钮上面时变成小手形状 */
+        form button{
+            width:100%;
+            padding:10px;
+            background-color:#CDC673;
+            border:1px solid black;
+            border-radius:4px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="headtop"></div>
+<div class="regist">
+    <h1>Regist</h1>
+    <!-- html通过action和post方法向后端传递数据，
+    action属性是指该表单要提交到哪里进行处理 -->
+    <form id="RegForm" action="ph2.php" method="post">
+        <!-- id是唯一标识该容器的属性 -->
+        <input type="text" id="userId" name="userId" placeholder="账 号" required="required">
+        <input type="text" id="userName" name="userName" placeholder="用户名" required="required">
+        <input type="password" id="passWord" name="passWord" placeholder="密  码" required="required">
+        <input type="password" id="passWord2" name="passWord2" placeholder="重复密码" required="required">
+        <input type="text" id="userAddress" name="userAddress" placeholder="地 址" required="required">
+        <input type="submit" id="userButton" name="btn" onclick="check()" value="注册">
+    </form>
+
+</div>
+</body>
+
+<script type="text/javascript" language="javascript" src="ph2.php">
+    function check(){
+        // document.getElementById("userId").value获取某个id的属性值
+        // console.log(id)可以用于调试
+        var userid=document.getElementById("userId").value;
+        var userName=document.getElementById("userName").value;
+        var passWord=document.getElementById("passWord").value;
+        var passWord2=document.getElementById("passWord2").value;
+        var userAddress=document.getElementById("userAddress").value;
+        if (userid == ""){
+            alert("账号不可为空!"); // 在页面上方发出警告
+            return false;
+        }
+        if (userName == ""){
+            alert("用户名不可为空!");
+            return false;
+        }
+        if (passWord == ""){
+            alert("密码不可为空!");
+            return false;
+        }
+        if (passWord2 != passWord){
+            alert("两次密码不一致!");
+            return false;
+        }
+        if (userAddress == ""){
+            alert("地址不可为空!");
+            return false;
+        }
+    }
+</script>
+</html>
